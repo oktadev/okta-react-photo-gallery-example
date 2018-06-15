@@ -9,6 +9,7 @@ export default class PhotoUpdatePage {
   imageInput: ElementFinder = element(by.css('input#file_image'));
   takenOnInput: ElementFinder = element(by.css('input#photo-takenOn'));
   uploadedOnInput: ElementFinder = element(by.css('input#photo-uploadedOn'));
+  openInput: ElementFinder = element(by.css('input#photo-open'));
   albumSelect: ElementFinder = element(by.css('select#photo-album'));
   tagSelect: ElementFinder = element(by.css('select#photo-tag'));
 
@@ -56,6 +57,9 @@ export default class PhotoUpdatePage {
     return this.uploadedOnInput.getAttribute('value');
   }
 
+  getOpenInput() {
+    return this.openInput;
+  }
   albumSelectLastOption() {
     this.albumSelect
       .all(by.tagName('option'))

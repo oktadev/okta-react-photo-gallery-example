@@ -21,6 +21,7 @@
             "image": "Image",
             "takenOn": "Taken On",
             "uploadedOn": "Uploaded On",
+            "open": "Open",
             "album": "Album",
             "tag": "Tag"
         }

@@ -13,6 +13,7 @@ import { IPhoto } from 'app/shared/model/photo.model';
 // tslint:disable-next-line:no-unused-variable
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
+// import PhotoGrid from 'react-photo-feed';
 
 export interface IPhotoProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
@@ -53,6 +54,36 @@ export class Photo extends React.Component<IPhotoProps, IPhotoState> {
 
   render() {
     const { photoList, match } = this.props;
+    const demoPhotos = [
+      {
+        id : 1, src : 'https://farm5.staticflickr.com/4077/34824083444_f5f050e31c_n.jpg',
+        bigSrc : 'https://farm5.staticflickr.com/4077/34824083444_f5f050e31c_b.jpg'
+      },
+      {
+        id : 2, src : 'https://farm5.staticflickr.com/4240/35527849422_25a0a67df6_n.jpg',
+        bigSrc : 'https://farm5.staticflickr.com/4240/35527849422_25a0a67df6_b.jpg'
+      },
+      {
+        id : 3, src : 'https://farm5.staticflickr.com/4077/34824083444_f5f050e31c_n.jpg',
+        bigSrc : 'https://farm5.staticflickr.com/4077/34824083444_f5f050e31c_b.jpg'
+      },
+      {
+        id : 4, src : 'https://farm5.staticflickr.com/4240/35527849422_25a0a67df6_n.jpg',
+        bigSrc : 'https://farm5.staticflickr.com/4240/35527849422_25a0a67df6_b.jpg'
+      },
+      {
+        id : 5, src : 'https://farm5.staticflickr.com/4077/34824083444_f5f050e31c_n.jpg',
+        bigSrc : 'https://farm5.staticflickr.com/4077/34824083444_f5f050e31c_b.jpg'
+      },
+      {
+        id : 6, src : 'https://farm5.staticflickr.com/4240/35527849422_25a0a67df6_n.jpg',
+        bigSrc : 'https://farm5.staticflickr.com/4240/35527849422_25a0a67df6_b.jpg'
+      },
+      {
+        id : 7, src : 'https://farm5.staticflickr.com/4077/34824083444_f5f050e31c_n.jpg',
+        bigSrc : 'https://farm5.staticflickr.com/4077/34824083444_f5f050e31c_b.jpg'
+      }
+    ];
     return (
       <div>
         <h2 id="photo-heading">
@@ -92,6 +123,9 @@ export class Photo extends React.Component<IPhotoProps, IPhotoState> {
                   <th className="hand" onClick={this.sort('uploadedOn')}>
                     <Translate contentKey="galleryApp.photo.uploadedOn">Uploaded On</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
+                  <th className="hand" onClick={this.sort('open')}>
+                    <Translate contentKey="galleryApp.photo.open">Open</Translate> <FontAwesomeIcon icon="sort" />
+                  </th>
                   <th>
                     <Translate contentKey="galleryApp.photo.album">Album</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
@@ -127,6 +161,7 @@ export class Photo extends React.Component<IPhotoProps, IPhotoState> {
                     <td>
                       <TextFormat type="date" value={photo.uploadedOn} format={APP_DATE_FORMAT} />
                     </td>
+                    <td>{photo.open ? 'true' : 'false'}</td>
                     <td>{photo.album ? <Link to={`album/${photo.album.id}`}>{photo.album.title}</Link> : ''}</td>
                     <td className="text-right">
                       <div className="btn-group flex-btn-group-container">
@@ -155,6 +190,7 @@ export class Photo extends React.Component<IPhotoProps, IPhotoState> {
               </tbody>
             </Table>
           </InfiniteScroll>
+          <!--PhotoGrid columns={3} photos={demoPhotos} /-->
         </div>
       </div>
     );

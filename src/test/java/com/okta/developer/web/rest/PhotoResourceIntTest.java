@@ -64,6 +64,9 @@ public class PhotoResourceIntTest {
     private static final Instant DEFAULT_UPLOADED_ON = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_UPLOADED_ON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
+    private static final Boolean DEFAULT_OPEN = false;
+    private static final Boolean UPDATED_OPEN = true;
+
     @Autowired
     private PhotoRepository photoRepository;
     @Mock
@@ -109,7 +112,8 @@ public class PhotoResourceIntTest {
             .image(DEFAULT_IMAGE)
             .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE)
             .takenOn(DEFAULT_TAKEN_ON)
-            .uploadedOn(DEFAULT_UPLOADED_ON);
+            .uploadedOn(DEFAULT_UPLOADED_ON)
+            .open(DEFAULT_OPEN);
         return photo;
     }
 
@@ -139,6 +143,7 @@ public class PhotoResourceIntTest {
         assertThat(testPhoto.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
         assertThat(testPhoto.getTakenOn()).isEqualTo(DEFAULT_TAKEN_ON);
         assertThat(testPhoto.getUploadedOn()).isEqualTo(DEFAULT_UPLOADED_ON);
+        assertThat(testPhoto.isOpen()).isEqualTo(DEFAULT_OPEN);
     }
 
     @Test
@@ -194,7 +199,8 @@ public class PhotoResourceIntTest {
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))))
             .andExpect(jsonPath("$.[*].takenOn").value(hasItem(DEFAULT_TAKEN_ON.toString())))
-            .andExpect(jsonPath("$.[*].uploadedOn").value(hasItem(DEFAULT_UPLOADED_ON.toString())));
+            .andExpect(jsonPath("$.[*].uploadedOn").value(hasItem(DEFAULT_UPLOADED_ON.toString())))
+            .andExpect(jsonPath("$.[*].open").value(hasItem(DEFAULT_OPEN.booleanValue())));
     }
     
     public void getAllPhotosWithEagerRelationshipsIsEnabled() throws Exception {
@@ -244,7 +250,8 @@ public class PhotoResourceIntTest {
             .andExpect(jsonPath("$.imageContentType").value(DEFAULT_IMAGE_CONTENT_TYPE))
             .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)))
             .andExpect(jsonPath("$.takenOn").value(DEFAULT_TAKEN_ON.toString()))
-            .andExpect(jsonPath("$.uploadedOn").value(DEFAULT_UPLOADED_ON.toString()));
+            .andExpect(jsonPath("$.uploadedOn").value(DEFAULT_UPLOADED_ON.toString()))
+            .andExpect(jsonPath("$.open").value(DEFAULT_OPEN.booleanValue()));
     }
     @Test
     @Transactional
@@ -272,7 +279,8 @@ public class PhotoResourceIntTest {
             .image(UPDATED_IMAGE)
             .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
             .takenOn(UPDATED_TAKEN_ON)
-            .uploadedOn(UPDATED_UPLOADED_ON);
+            .uploadedOn(UPDATED_UPLOADED_ON)
+            .open(UPDATED_OPEN);
 
         restPhotoMockMvc.perform(put("/api/photos")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -289,6 +297,7 @@ public class PhotoResourceIntTest {
         assertThat(testPhoto.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
         assertThat(testPhoto.getTakenOn()).isEqualTo(UPDATED_TAKEN_ON);
         assertThat(testPhoto.getUploadedOn()).isEqualTo(UPDATED_UPLOADED_ON);
+        assertThat(testPhoto.isOpen()).isEqualTo(UPDATED_OPEN);
     }
 
     @Test

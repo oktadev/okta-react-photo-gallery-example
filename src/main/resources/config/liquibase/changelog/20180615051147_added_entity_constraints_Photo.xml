@@ -6,7 +6,7 @@
     <!--
         Added the constraints for entity Photo.
     -->
-    <changeSet id="20180612193921-2" author="jhipster">
+    <changeSet id="20180615051147-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="album_id"
                                  baseTableName="photo"

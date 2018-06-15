@@ -43,6 +43,14 @@ describe('Photo e2e test', () => {
     expect(await photoUpdatePage.getTakenOnInput()).to.contain('2001-01-01T02:30');
     photoUpdatePage.setUploadedOnInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
     expect(await photoUpdatePage.getUploadedOnInput()).to.contain('2001-01-01T02:30');
+    const selectedOpen = await photoUpdatePage.getOpenInput().isSelected();
+    if (selectedOpen) {
+      photoUpdatePage.getOpenInput().click();
+      expect(await photoUpdatePage.getOpenInput().isSelected()).to.be.false;
+    } else {
+      photoUpdatePage.getOpenInput().click();
+      expect(await photoUpdatePage.getOpenInput().isSelected()).to.be.true;
+    }
     photoUpdatePage.albumSelectLastOption();
     // photoUpdatePage.tagSelectLastOption();
     await photoUpdatePage.save();

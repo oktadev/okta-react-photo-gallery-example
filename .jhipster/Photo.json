@@ -28,6 +28,10 @@
         {
             "fieldName": "uploadedOn",
             "fieldType": "Instant"
+        },
+        {
+            "fieldName": "open",
+            "fieldType": "Boolean"
         }
     ],
     "relationships": [
@@ -46,7 +50,7 @@
             "ownerSide": true
         }
     ],
-    "changelogDate": "20180612193921",
+    "changelogDate": "20180615051147",
     "entityTableName": "photo",
     "dto": "no",
     "pagination": "infinite-scroll",

@@ -26,7 +26,7 @@
             "otherEntityField": "login"
         }
     ],
-    "changelogDate": "20180612193920",
+    "changelogDate": "20180615051146",
     "entityTableName": "album",
     "dto": "no",
     "pagination": "pagination",

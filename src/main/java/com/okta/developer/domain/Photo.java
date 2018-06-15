@@ -49,6 +49,9 @@ public class Photo implements Serializable {
     @Column(name = "uploaded_on")
     private Instant uploadedOn;
 
+    @Column(name = "jhi_open")
+    private Boolean open;
+
     @ManyToOne
     @JsonIgnoreProperties("")
     private Album album;
@@ -147,6 +150,19 @@ public class Photo implements Serializable {
         this.uploadedOn = uploadedOn;
     }
 
+    public Boolean isOpen() {
+        return open;
+    }
+
+    public Photo open(Boolean open) {
+        this.open = open;
+        return this;
+    }
+
+    public void setOpen(Boolean open) {
+        this.open = open;
+    }
+
     public Album getAlbum() {
         return album;
     }
@@ -216,6 +232,7 @@ public class Photo implements Serializable {
             ", imageContentType='" + getImageContentType() + "'" +
             ", takenOn='" + getTakenOn() + "'" +
             ", uploadedOn='" + getUploadedOn() + "'" +
+            ", open='" + isOpen() + "'" +
             "}";
     }
 }

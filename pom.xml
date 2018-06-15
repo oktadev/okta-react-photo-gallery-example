@@ -9,7 +9,7 @@
     <name>Gallery</name>
 
     <repositories>
-        <!-- TODO Remove snapshot repositories after final Spring Boot 2 release -->
+        <!-- TODO Remove snapshot repositories after final Spring Cloud release -->
         <repository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
@@ -52,7 +52,7 @@
         <profile.swagger />
 
         <!-- Dependency versions -->
-        <jhipster-dependencies.version>2.0.9</jhipster-dependencies.version>
+        <jhipster-dependencies.version>2.0.11</jhipster-dependencies.version>
         <!-- The spring-boot version should match the one managed by
         https://mvnrepository.com/artifact/io.github.jhipster/jhipster-dependencies/${jhipster-dependencies.version} -->
         <spring-boot.version>2.0.2.RELEASE</spring-boot.version>
@@ -124,13 +124,11 @@
             <groupId>io.github.jhipster</groupId>
             <artifactId>jhipster-framework</artifactId>
         </dependency>
-
-        <!-- TODO To remove after final Spring Boot 2 release -->
         <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
+            <groupId>com.drewnoakes</groupId>
+            <artifactId>metadata-extractor</artifactId>
+            <version>2.11.0</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>

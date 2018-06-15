@@ -16,7 +16,7 @@
     <!--
         Added the entity Photo.
     -->
-    <changeSet id="20180612193921-1" author="jhipster">
+    <changeSet id="20180615051147-1" author="jhipster">
         <createTable tableName="photo">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
@@ -41,6 +41,10 @@
             </column>
 
             <column name="uploaded_on" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="jhi_open" type="boolean">
                 <constraints nullable="true" />
             </column>
 

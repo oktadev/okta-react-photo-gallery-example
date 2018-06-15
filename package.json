@@ -1,4 +1,3 @@
-
 {
   "name": "gallery",
   "version": "0.0.0",
@@ -120,7 +119,10 @@
     "yarn": ">=1.3.2"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,css,scss}": ["prettier --write", "git add"]
+    "src/**/*.{ts,tsx,css,scss}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "scripts": {
     "precommit": "lint-staged",

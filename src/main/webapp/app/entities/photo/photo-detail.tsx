@@ -74,6 +74,12 @@ export class PhotoDetail extends React.Component<IPhotoDetailProps> {
               <TextFormat value={photoEntity.uploadedOn} type="date" format={APP_DATE_FORMAT} />
             </dd>
             <dt>
+              <span id="open">
+                <Translate contentKey="galleryApp.photo.open">Open</Translate>
+              </span>
+            </dt>
+            <dd>{photoEntity.open ? 'true' : 'false'}</dd>
+            <dt>
               <Translate contentKey="galleryApp.photo.album">Album</Translate>
             </dt>
             <dd>{photoEntity.album ? photoEntity.album.title : ''}</dd>

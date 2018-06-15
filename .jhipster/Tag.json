@@ -20,7 +20,7 @@
             "otherEntityRelationshipName": "tag"
         }
     ],
-    "changelogDate": "20180612193922",
+    "changelogDate": "20180615051148",
     "entityTableName": "tag",
     "dto": "no",
     "pagination": "infinite-scroll",

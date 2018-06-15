@@ -10,8 +10,11 @@ export interface IPhoto {
   image?: any;
   takenOn?: Moment;
   uploadedOn?: Moment;
+  open?: boolean;
   album?: IAlbum;
   tags?: ITag[];
 }
 
-export const defaultValue: Readonly<IPhoto> = {};
+export const defaultValue: Readonly<IPhoto> = {
+  open: false
+};

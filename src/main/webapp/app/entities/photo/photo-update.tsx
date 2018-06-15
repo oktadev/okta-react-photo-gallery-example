@@ -132,7 +132,7 @@ export class PhotoUpdate extends React.Component<IPhotoUpdateProps, IPhotoUpdate
     const isInvalid = false;
     const { photoEntity, albums, tags, loading, updating } = this.props;
     const { isNew } = this.state;
-
+    const dateRow = isNew ? { display: 'none' } : { display: 'block' };
     const { description, image, imageContentType } = photoEntity;
 
     return (
@@ -206,7 +206,7 @@ export class PhotoUpdate extends React.Component<IPhotoUpdateProps, IPhotoUpdate
                     <input id="file_image" type="file" onChange={this.onBlobChange(true, 'image')} accept="image/*" />
                   </AvGroup>
                 </AvGroup>
-                <AvGroup>
+                <AvGroup style={dateRow}>
                   <Label id="takenOnLabel" for="takenOn">
                     <Translate contentKey="galleryApp.photo.takenOn">Taken On</Translate>
                   </Label>
@@ -218,7 +218,7 @@ export class PhotoUpdate extends React.Component<IPhotoUpdateProps, IPhotoUpdate
                     value={isNew ? null : convertDateTimeFromServer(this.props.photoEntity.takenOn)}
                   />
                 </AvGroup>
-                <AvGroup>
+                <AvGroup style={dateRow}>
                   <Label id="uploadedOnLabel" for="uploadedOn">
                     <Translate contentKey="galleryApp.photo.uploadedOn">Uploaded On</Translate>
                   </Label>
@@ -229,6 +229,12 @@ export class PhotoUpdate extends React.Component<IPhotoUpdateProps, IPhotoUpdate
                     name="uploadedOn"
                     value={isNew ? null : convertDateTimeFromServer(this.props.photoEntity.uploadedOn)}
                   />
+                </AvGroup>
+                <AvGroup>
+                  <Label id="openLabel" check>
+                    <AvInput id="photo-open" type="checkbox" className="form-control" name="open" />
+                    <Translate contentKey="galleryApp.photo.open">Open</Translate>
+                  </Label>
                 </AvGroup>
                 <AvGroup>
                   <Label for="album.title">
