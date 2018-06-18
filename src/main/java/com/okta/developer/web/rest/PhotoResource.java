@@ -68,7 +68,7 @@ public class PhotoResource {
             throw new BadRequestAlertException("A new photo cannot already have an ID", ENTITY_NAME, "idexists");
         }
 
-        setTakenOnDate(photo);
+        photo = setTakenOnDate(photo);
         photo.setUploadedOn(Instant.now());
         Photo result = photoRepository.save(photo);
         return ResponseEntity.created(new URI("/api/photos/" + result.getId()))
@@ -76,17 +76,28 @@ public class PhotoResource {
             .body(result);
     }
 
-    private void setTakenOnDate(Photo photo) throws ImageProcessingException, IOException {
+    private Photo setTakenOnDate(Photo photo) throws ImageProcessingException, IOException {
         String str = DatatypeConverter.printBase64Binary(photo.getImage());
         byte [] data2 = DatatypeConverter.parseBase64Binary(str);
         InputStream inputStream = new ByteArrayInputStream(data2);
         BufferedInputStream bis = new BufferedInputStream(inputStream);
         Metadata metadata = ImageMetadataReader.readMetadata(bis);
         ExifSubIFDDirectory directory = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
-        Date date = directory.getDateDigitized();
-        if (date != null) {
-            photo.setTakenOn(date.toInstant());
+
+        if (directory != null) {
+            Date date = directory.getDateDigitized();
+            if (date != null) {
+                photo.setTakenOn(date.toInstant());
+            }
         }
+
+        System.out.println("\n\n\nphoto taken on: " + photo.getTakenOn());
+        if (photo.getTakenOn() == null) {
+            photo.setTakenOn(Instant.now());
+        }
+
+        System.out.println("\n\n\nphoto taken after: " + photo.getTakenOn());
+        return photo;
     }
 
     /**
