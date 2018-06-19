@@ -1,6 +1,8 @@
 import * as React from 'react';
+import { Switch } from 'react-router-dom';
+
 // tslint:disable-next-line:no-unused-variable
-import { Route, Switch } from 'react-router-dom';
+import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
 
 import Album from './album';
 import Photo from './photo';
@@ -11,10 +13,9 @@ const Routes = ({ match }) => (
   <div>
     <Switch>
       {/* prettier-ignore */}
-      <Route path={`${match.url}/album`} component={Album} />
-      <Route path={`${match.url}/photo`} component={Photo} />
-      <Route path={`${match.url}/tag`} component={Tag} />
+      <ErrorBoundaryRoute path={`${match.url}/album`} component={Album} />
       <ErrorBoundaryRoute path={`${match.url}/photo`} component={Photo} />
+      <ErrorBoundaryRoute path={`${match.url}/tag`} component={Tag} />
       {/* jhipster-needle-add-route-path - JHipster will routes here */}
     </Switch>
   </div>

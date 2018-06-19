@@ -49,13 +49,6 @@ export class Home extends React.Component<IHomeProp> {
                   <br />- User (login=&quot;user&quot; and password=&quot;user&quot;).
                 </Translate>
               </Alert>
-
-              <Alert color="warning">
-                <Translate contentKey="global.messages.info.register.noaccount">You do not have an account yet?</Translate>&nbsp;
-                <Link to="/register" className="alert-link">
-                  <Translate contentKey="global.messages.info.register.link">Register a new account</Translate>
-                </Link>
-              </Alert>
             </div>
           )}
           <p>
@@ -64,7 +57,7 @@ export class Home extends React.Component<IHomeProp> {
 
           <ul>
             <li>
-              <a href="http://jhipster.github.io/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">
                 <Translate contentKey="home.link.homepage">JHipster homepage</Translate>
               </a>
             </li>

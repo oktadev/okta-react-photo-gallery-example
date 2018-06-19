@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
+
+import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
 
 import Tag from './tag';
 import TagDetail from './tag-detail';
@@ -9,12 +11,12 @@ import TagDeleteDialog from './tag-delete-dialog';
 const Routes = ({ match }) => (
   <>
     <Switch>
-      <Route exact path={`${match.url}/new`} component={TagUpdate} />
-      <Route exact path={`${match.url}/:id/edit`} component={TagUpdate} />
-      <Route exact path={`${match.url}/:id`} component={TagDetail} />
-      <Route path={match.url} component={Tag} />
+      <ErrorBoundaryRoute exact path={`${match.url}/new`} component={TagUpdate} />
+      <ErrorBoundaryRoute exact path={`${match.url}/:id/edit`} component={TagUpdate} />
+      <ErrorBoundaryRoute exact path={`${match.url}/:id`} component={TagDetail} />
+      <ErrorBoundaryRoute path={match.url} component={Tag} />
     </Switch>
-    <Route path={`${match.url}/:id/delete`} component={TagDeleteDialog} />
+    <ErrorBoundaryRoute path={`${match.url}/:id/delete`} component={TagDeleteDialog} />
   </>
 );
 

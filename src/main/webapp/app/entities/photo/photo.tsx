@@ -57,7 +57,7 @@ export class Photo extends React.Component<IPhotoProps, IPhotoState> {
     const photoSet = photoList.map((photo, i) => ({
       src: `data:${photo.imageContentType};base64,${photo.image}`,
       width: photo.height > photo.width ? 3 : photo.height === photo.width ? 1 : 4,
-      height: photo.height > photo.width ? 4 : photo.height == photo.width ? 1 : 3
+      height: photo.height > photo.width ? 4 : photo.height === photo.width ? 1 : 3
     }));
 
     console.log('photoSet', photoSet);
