@@ -22,16 +22,20 @@
             ]
         },
         {
-            "fieldName": "takenOn",
+            "fieldName": "height",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "width",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "taken",
             "fieldType": "Instant"
         },
         {
-            "fieldName": "uploadedOn",
+            "fieldName": "uploaded",
             "fieldType": "Instant"
-        },
-        {
-            "fieldName": "open",
-            "fieldType": "Boolean"
         }
     ],
     "relationships": [

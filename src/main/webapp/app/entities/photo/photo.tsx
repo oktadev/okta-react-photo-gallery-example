@@ -13,7 +13,7 @@ import { IPhoto } from 'app/shared/model/photo.model';
 // tslint:disable-next-line:no-unused-variable
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
-// import PhotoGrid from 'react-photo-feed';
+import Gallery from 'react-photo-gallery';
 
 export interface IPhotoProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
@@ -54,43 +54,14 @@ export class Photo extends React.Component<IPhotoProps, IPhotoState> {
 
   render() {
     const { photoList, match } = this.props;
-    const demoPhotos = [
-      {
-        id: 1,
-        src: 'https://farm5.staticflickr.com/4077/34824083444_f5f050e31c_n.jpg',
-        bigSrc: 'https://farm5.staticflickr.com/4077/34824083444_f5f050e31c_b.jpg'
-      },
-      {
-        id: 2,
-        src: 'https://farm5.staticflickr.com/4240/35527849422_25a0a67df6_n.jpg',
-        bigSrc: 'https://farm5.staticflickr.com/4240/35527849422_25a0a67df6_b.jpg'
-      },
-      {
-        id: 3,
-        src: 'https://farm5.staticflickr.com/4077/34824083444_f5f050e31c_n.jpg',
-        bigSrc: 'https://farm5.staticflickr.com/4077/34824083444_f5f050e31c_b.jpg'
-      },
-      {
-        id: 4,
-        src: 'https://farm5.staticflickr.com/4240/35527849422_25a0a67df6_n.jpg',
-        bigSrc: 'https://farm5.staticflickr.com/4240/35527849422_25a0a67df6_b.jpg'
-      },
-      {
-        id: 5,
-        src: 'https://farm5.staticflickr.com/4077/34824083444_f5f050e31c_n.jpg',
-        bigSrc: 'https://farm5.staticflickr.com/4077/34824083444_f5f050e31c_b.jpg'
-      },
-      {
-        id: 6,
-        src: 'https://farm5.staticflickr.com/4240/35527849422_25a0a67df6_n.jpg',
-        bigSrc: 'https://farm5.staticflickr.com/4240/35527849422_25a0a67df6_b.jpg'
-      },
-      {
-        id: 7,
-        src: 'https://farm5.staticflickr.com/4077/34824083444_f5f050e31c_n.jpg',
-        bigSrc: 'https://farm5.staticflickr.com/4077/34824083444_f5f050e31c_b.jpg'
-      }
-    ];
+    const photoSet = photoList.map((photo, i) => ({
+      src: `data:${photo.imageContentType};base64,${photo.image}`,
+      width: photo.height > photo.width ? 3 : photo.height === photo.width ? 1 : 4,
+      height: photo.height > photo.width ? 4 : photo.height == photo.width ? 1 : 3
+    }));
+
+    console.log('photoSet', photoSet);
+
     return (
       <div>
         <h2 id="photo-heading">
@@ -124,14 +95,17 @@ export class Photo extends React.Component<IPhotoProps, IPhotoState> {
                   <th className="hand" onClick={this.sort('image')}>
                     <Translate contentKey="galleryApp.photo.image">Image</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th className="hand" onClick={this.sort('takenOn')}>
-                    <Translate contentKey="galleryApp.photo.takenOn">Taken On</Translate> <FontAwesomeIcon icon="sort" />
+                  <th className="hand" onClick={this.sort('height')}>
+                    <Translate contentKey="galleryApp.photo.height">Height</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th className="hand" onClick={this.sort('uploadedOn')}>
-                    <Translate contentKey="galleryApp.photo.uploadedOn">Uploaded On</Translate> <FontAwesomeIcon icon="sort" />
+                  <th className="hand" onClick={this.sort('width')}>
+                    <Translate contentKey="galleryApp.photo.width">Width</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th className="hand" onClick={this.sort('open')}>
-                    <Translate contentKey="galleryApp.photo.open">Open</Translate> <FontAwesomeIcon icon="sort" />
+                  <th className="hand" onClick={this.sort('taken')}>
+                    <Translate contentKey="galleryApp.photo.taken">Taken</Translate> <FontAwesomeIcon icon="sort" />
+                  </th>
+                  <th className="hand" onClick={this.sort('uploaded')}>
+                    <Translate contentKey="galleryApp.photo.uploaded">Uploaded</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
                   <th>
                     <Translate contentKey="galleryApp.photo.album">Album</Translate> <FontAwesomeIcon icon="sort" />
@@ -162,13 +136,14 @@ export class Photo extends React.Component<IPhotoProps, IPhotoState> {
                         </div>
                       ) : null}
                     </td>
+                    <td>{photo.height}</td>
+                    <td>{photo.width}</td>
                     <td>
-                      <TextFormat type="date" value={photo.takenOn} format={APP_DATE_FORMAT} />
+                      <TextFormat type="date" value={photo.taken} format={APP_DATE_FORMAT} />
                     </td>
                     <td>
-                      <TextFormat type="date" value={photo.uploadedOn} format={APP_DATE_FORMAT} />
+                      <TextFormat type="date" value={photo.uploaded} format={APP_DATE_FORMAT} />
                     </td>
-                    <td>{photo.open ? 'true' : 'false'}</td>
                     <td>{photo.album ? <Link to={`album/${photo.album.id}`}>{photo.album.title}</Link> : ''}</td>
                     <td className="text-right">
                       <div className="btn-group flex-btn-group-container">
@@ -198,6 +173,7 @@ export class Photo extends React.Component<IPhotoProps, IPhotoState> {
             </Table>
           </InfiniteScroll>
         </div>
+        <Gallery photos={photoSet} />
       </div>
     );
   }

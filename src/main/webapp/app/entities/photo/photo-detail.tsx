@@ -58,27 +58,33 @@ export class PhotoDetail extends React.Component<IPhotoDetailProps> {
               ) : null}
             </dd>
             <dt>
-              <span id="takenOn">
-                <Translate contentKey="galleryApp.photo.takenOn">Taken On</Translate>
+              <span id="height">
+                <Translate contentKey="galleryApp.photo.height">Height</Translate>
+              </span>
+            </dt>
+            <dd>{photoEntity.height}</dd>
+            <dt>
+              <span id="width">
+                <Translate contentKey="galleryApp.photo.width">Width</Translate>
+              </span>
+            </dt>
+            <dd>{photoEntity.width}</dd>
+            <dt>
+              <span id="taken">
+                <Translate contentKey="galleryApp.photo.taken">Taken</Translate>
               </span>
             </dt>
             <dd>
-              <TextFormat value={photoEntity.takenOn} type="date" format={APP_DATE_FORMAT} />
+              <TextFormat value={photoEntity.taken} type="date" format={APP_DATE_FORMAT} />
             </dd>
             <dt>
-              <span id="uploadedOn">
-                <Translate contentKey="galleryApp.photo.uploadedOn">Uploaded On</Translate>
+              <span id="uploaded">
+                <Translate contentKey="galleryApp.photo.uploaded">Uploaded</Translate>
               </span>
             </dt>
             <dd>
-              <TextFormat value={photoEntity.uploadedOn} type="date" format={APP_DATE_FORMAT} />
+              <TextFormat value={photoEntity.uploaded} type="date" format={APP_DATE_FORMAT} />
             </dd>
-            <dt>
-              <span id="open">
-                <Translate contentKey="galleryApp.photo.open">Open</Translate>
-              </span>
-            </dt>
-            <dd>{photoEntity.open ? 'true' : 'false'}</dd>
             <dt>
               <Translate contentKey="galleryApp.photo.album">Album</Translate>
             </dt>

@@ -58,14 +58,17 @@ public class PhotoResourceIntTest {
     private static final String DEFAULT_IMAGE_CONTENT_TYPE = "image/jpg";
     private static final String UPDATED_IMAGE_CONTENT_TYPE = "image/png";
 
-    private static final Instant DEFAULT_TAKEN_ON = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_TAKEN_ON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Integer DEFAULT_HEIGHT = 1;
+    private static final Integer UPDATED_HEIGHT = 2;
 
-    private static final Instant DEFAULT_UPLOADED_ON = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_UPLOADED_ON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Integer DEFAULT_WIDTH = 1;
+    private static final Integer UPDATED_WIDTH = 2;
 
-    private static final Boolean DEFAULT_OPEN = false;
-    private static final Boolean UPDATED_OPEN = true;
+    private static final Instant DEFAULT_TAKEN = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_TAKEN = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final Instant DEFAULT_UPLOADED = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_UPLOADED = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     @Autowired
     private PhotoRepository photoRepository;
@@ -111,9 +114,10 @@ public class PhotoResourceIntTest {
             .description(DEFAULT_DESCRIPTION)
             .image(DEFAULT_IMAGE)
             .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE)
-            .takenOn(DEFAULT_TAKEN_ON)
-            .uploadedOn(DEFAULT_UPLOADED_ON)
-            .open(DEFAULT_OPEN);
+            .height(DEFAULT_HEIGHT)
+            .width(DEFAULT_WIDTH)
+            .taken(DEFAULT_TAKEN)
+            .uploaded(DEFAULT_UPLOADED);
         return photo;
     }
 
@@ -141,9 +145,10 @@ public class PhotoResourceIntTest {
         assertThat(testPhoto.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testPhoto.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testPhoto.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
-        assertThat(testPhoto.getTakenOn()).isEqualTo(DEFAULT_TAKEN_ON);
-        assertThat(testPhoto.getUploadedOn()).isEqualTo(DEFAULT_UPLOADED_ON);
-        assertThat(testPhoto.isOpen()).isEqualTo(DEFAULT_OPEN);
+        assertThat(testPhoto.getHeight()).isEqualTo(DEFAULT_HEIGHT);
+        assertThat(testPhoto.getWidth()).isEqualTo(DEFAULT_WIDTH);
+        assertThat(testPhoto.getTaken()).isEqualTo(DEFAULT_TAKEN);
+        assertThat(testPhoto.getUploaded()).isEqualTo(DEFAULT_UPLOADED);
     }
 
     @Test
@@ -198,9 +203,10 @@ public class PhotoResourceIntTest {
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))))
-            .andExpect(jsonPath("$.[*].takenOn").value(hasItem(DEFAULT_TAKEN_ON.toString())))
-            .andExpect(jsonPath("$.[*].uploadedOn").value(hasItem(DEFAULT_UPLOADED_ON.toString())))
-            .andExpect(jsonPath("$.[*].open").value(hasItem(DEFAULT_OPEN.booleanValue())));
+            .andExpect(jsonPath("$.[*].height").value(hasItem(DEFAULT_HEIGHT)))
+            .andExpect(jsonPath("$.[*].width").value(hasItem(DEFAULT_WIDTH)))
+            .andExpect(jsonPath("$.[*].taken").value(hasItem(DEFAULT_TAKEN.toString())))
+            .andExpect(jsonPath("$.[*].uploaded").value(hasItem(DEFAULT_UPLOADED.toString())));
     }
     
     public void getAllPhotosWithEagerRelationshipsIsEnabled() throws Exception {
@@ -249,9 +255,10 @@ public class PhotoResourceIntTest {
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.imageContentType").value(DEFAULT_IMAGE_CONTENT_TYPE))
             .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)))
-            .andExpect(jsonPath("$.takenOn").value(DEFAULT_TAKEN_ON.toString()))
-            .andExpect(jsonPath("$.uploadedOn").value(DEFAULT_UPLOADED_ON.toString()))
-            .andExpect(jsonPath("$.open").value(DEFAULT_OPEN.booleanValue()));
+            .andExpect(jsonPath("$.height").value(DEFAULT_HEIGHT))
+            .andExpect(jsonPath("$.width").value(DEFAULT_WIDTH))
+            .andExpect(jsonPath("$.taken").value(DEFAULT_TAKEN.toString()))
+            .andExpect(jsonPath("$.uploaded").value(DEFAULT_UPLOADED.toString()));
     }
     @Test
     @Transactional
@@ -278,9 +285,10 @@ public class PhotoResourceIntTest {
             .description(UPDATED_DESCRIPTION)
             .image(UPDATED_IMAGE)
             .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
-            .takenOn(UPDATED_TAKEN_ON)
-            .uploadedOn(UPDATED_UPLOADED_ON)
-            .open(UPDATED_OPEN);
+            .height(UPDATED_HEIGHT)
+            .width(UPDATED_WIDTH)
+            .taken(UPDATED_TAKEN)
+            .uploaded(UPDATED_UPLOADED);
 
         restPhotoMockMvc.perform(put("/api/photos")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -295,9 +303,10 @@ public class PhotoResourceIntTest {
         assertThat(testPhoto.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testPhoto.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testPhoto.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
-        assertThat(testPhoto.getTakenOn()).isEqualTo(UPDATED_TAKEN_ON);
-        assertThat(testPhoto.getUploadedOn()).isEqualTo(UPDATED_UPLOADED_ON);
-        assertThat(testPhoto.isOpen()).isEqualTo(UPDATED_OPEN);
+        assertThat(testPhoto.getHeight()).isEqualTo(UPDATED_HEIGHT);
+        assertThat(testPhoto.getWidth()).isEqualTo(UPDATED_WIDTH);
+        assertThat(testPhoto.getTaken()).isEqualTo(UPDATED_TAKEN);
+        assertThat(testPhoto.getUploaded()).isEqualTo(UPDATED_UPLOADED);
     }
 
     @Test

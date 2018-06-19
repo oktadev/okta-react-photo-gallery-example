@@ -14,6 +14,7 @@ const Routes = ({ match }) => (
       <Route path={`${match.url}/album`} component={Album} />
       <Route path={`${match.url}/photo`} component={Photo} />
       <Route path={`${match.url}/tag`} component={Tag} />
+      <ErrorBoundaryRoute path={`${match.url}/photo`} component={Photo} />
       {/* jhipster-needle-add-route-path - JHipster will routes here */}
     </Switch>
   </div>

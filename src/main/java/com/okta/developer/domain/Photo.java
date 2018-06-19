@@ -43,14 +43,17 @@ public class Photo implements Serializable {
     @Column(name = "image_content_type")
     private String imageContentType;
 
-    @Column(name = "taken_on")
-    private Instant takenOn;
+    @Column(name = "height")
+    private Integer height;
 
-    @Column(name = "uploaded_on")
-    private Instant uploadedOn;
+    @Column(name = "width")
+    private Integer width;
 
-    @Column(name = "jhi_open")
-    private Boolean open;
+    @Column(name = "taken")
+    private Instant taken;
+
+    @Column(name = "uploaded")
+    private Instant uploaded;
 
     @ManyToOne
     @JsonIgnoreProperties("")
@@ -124,43 +127,56 @@ public class Photo implements Serializable {
         this.imageContentType = imageContentType;
     }
 
-    public Instant getTakenOn() {
-        return takenOn;
+    public Integer getHeight() {
+        return height;
     }
 
-    public Photo takenOn(Instant takenOn) {
-        this.takenOn = takenOn;
+    public Photo height(Integer height) {
+        this.height = height;
         return this;
     }
 
-    public void setTakenOn(Instant takenOn) {
-        this.takenOn = takenOn;
+    public void setHeight(Integer height) {
+        this.height = height;
     }
 
-    public Instant getUploadedOn() {
-        return uploadedOn;
+    public Integer getWidth() {
+        return width;
     }
 
-    public Photo uploadedOn(Instant uploadedOn) {
-        this.uploadedOn = uploadedOn;
+    public Photo width(Integer width) {
+        this.width = width;
         return this;
     }
 
-    public void setUploadedOn(Instant uploadedOn) {
-        this.uploadedOn = uploadedOn;
+    public void setWidth(Integer width) {
+        this.width = width;
     }
 
-    public Boolean isOpen() {
-        return open;
+    public Instant getTaken() {
+        return taken;
     }
 
-    public Photo open(Boolean open) {
-        this.open = open;
+    public Photo taken(Instant taken) {
+        this.taken = taken;
         return this;
     }
 
-    public void setOpen(Boolean open) {
-        this.open = open;
+    public void setTaken(Instant taken) {
+        this.taken = taken;
+    }
+
+    public Instant getUploaded() {
+        return uploaded;
+    }
+
+    public Photo uploaded(Instant uploaded) {
+        this.uploaded = uploaded;
+        return this;
+    }
+
+    public void setUploaded(Instant uploaded) {
+        this.uploaded = uploaded;
     }
 
     public Album getAlbum() {
@@ -230,9 +246,10 @@ public class Photo implements Serializable {
             ", description='" + getDescription() + "'" +
             ", image='" + getImage() + "'" +
             ", imageContentType='" + getImageContentType() + "'" +
-            ", takenOn='" + getTakenOn() + "'" +
-            ", uploadedOn='" + getUploadedOn() + "'" +
-            ", open='" + isOpen() + "'" +
+            ", height=" + getHeight() +
+            ", width=" + getWidth() +
+            ", taken='" + getTaken() + "'" +
+            ", uploaded='" + getUploaded() + "'" +
             "}";
     }
 }

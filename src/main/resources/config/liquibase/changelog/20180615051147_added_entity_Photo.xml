@@ -36,15 +36,19 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="taken_on" type="datetime">
+            <column name="height" type="integer">
                 <constraints nullable="true" />
             </column>
 
-            <column name="uploaded_on" type="datetime">
+            <column name="width" type="integer">
                 <constraints nullable="true" />
             </column>
 
-            <column name="jhi_open" type="boolean">
+            <column name="taken" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="uploaded" type="datetime">
                 <constraints nullable="true" />
             </column>
 
@@ -54,8 +58,8 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="photo" columnName="taken_on" columnDataType="datetime"/>
-        <dropDefaultValue tableName="photo" columnName="uploaded_on" columnDataType="datetime"/>
+        <dropDefaultValue tableName="photo" columnName="taken" columnDataType="datetime"/>
+        <dropDefaultValue tableName="photo" columnName="uploaded" columnDataType="datetime"/>
         
         <createTable tableName="photo_tag">
             <column name="tags_id" type="bigint">

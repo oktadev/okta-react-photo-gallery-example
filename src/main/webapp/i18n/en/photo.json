@@ -19,9 +19,10 @@
             "title": "Title",
             "description": "Description",
             "image": "Image",
-            "takenOn": "Taken On",
-            "uploadedOn": "Uploaded On",
-            "open": "Open",
+            "height": "Height",
+            "width": "Width",
+            "taken": "Taken",
+            "uploaded": "Uploaded",
             "album": "Album",
             "tag": "Tag"
         }

@@ -56,8 +56,8 @@ export class PhotoUpdate extends React.Component<IPhotoUpdateProps, IPhotoUpdate
   };
 
   saveEntity = (event, errors, values) => {
-    values.takenOn = new Date(values.takenOn);
-    values.uploadedOn = new Date(values.uploadedOn);
+    values.taken = new Date(values.taken);
+    values.uploaded = new Date(values.uploaded);
 
     if (errors.length === 0) {
       const { photoEntity } = this.props;
@@ -132,7 +132,7 @@ export class PhotoUpdate extends React.Component<IPhotoUpdateProps, IPhotoUpdate
     const isInvalid = false;
     const { photoEntity, albums, tags, loading, updating } = this.props;
     const { isNew } = this.state;
-    const dateRow = isNew ? { display: 'none' } : { display: 'block' };
+
     const { description, image, imageContentType } = photoEntity;
 
     return (
@@ -206,35 +206,41 @@ export class PhotoUpdate extends React.Component<IPhotoUpdateProps, IPhotoUpdate
                     <input id="file_image" type="file" onChange={this.onBlobChange(true, 'image')} accept="image/*" />
                   </AvGroup>
                 </AvGroup>
-                <AvGroup style={dateRow}>
-                  <Label id="takenOnLabel" for="takenOn">
-                    <Translate contentKey="galleryApp.photo.takenOn">Taken On</Translate>
+                <AvGroup>
+                  <Label id="heightLabel" for="height">
+                    <Translate contentKey="galleryApp.photo.height">Height</Translate>
                   </Label>
-                  <AvInput
-                    id="photo-takenOn"
-                    type="datetime-local"
-                    className="form-control"
-                    name="takenOn"
-                    value={isNew ? null : convertDateTimeFromServer(this.props.photoEntity.takenOn)}
-                  />
+                  <AvField id="photo-height" type="number" className="form-control" name="height" />
                 </AvGroup>
-                <AvGroup style={dateRow}>
-                  <Label id="uploadedOnLabel" for="uploadedOn">
-                    <Translate contentKey="galleryApp.photo.uploadedOn">Uploaded On</Translate>
+                <AvGroup>
+                  <Label id="widthLabel" for="width">
+                    <Translate contentKey="galleryApp.photo.width">Width</Translate>
+                  </Label>
+                  <AvField id="photo-width" type="number" className="form-control" name="width" />
+                </AvGroup>
+                <AvGroup>
+                  <Label id="takenLabel" for="taken">
+                    <Translate contentKey="galleryApp.photo.taken">Taken</Translate>
                   </Label>
                   <AvInput
-                    id="photo-uploadedOn"
+                    id="photo-taken"
                     type="datetime-local"
                     className="form-control"
-                    name="uploadedOn"
-                    value={isNew ? null : convertDateTimeFromServer(this.props.photoEntity.uploadedOn)}
+                    name="taken"
+                    value={isNew ? null : convertDateTimeFromServer(this.props.photoEntity.taken)}
                   />
                 </AvGroup>
                 <AvGroup>
-                  <Label id="openLabel" check>
-                    <AvInput id="photo-open" type="checkbox" className="form-control" name="open" />
-                    <Translate contentKey="galleryApp.photo.open">Open</Translate>
+                  <Label id="uploadedLabel" for="uploaded">
+                    <Translate contentKey="galleryApp.photo.uploaded">Uploaded</Translate>
                   </Label>
+                  <AvInput
+                    id="photo-uploaded"
+                    type="datetime-local"
+                    className="form-control"
+                    name="uploaded"
+                    value={isNew ? null : convertDateTimeFromServer(this.props.photoEntity.uploaded)}
+                  />
                 </AvGroup>
                 <AvGroup>
                   <Label for="album.title">

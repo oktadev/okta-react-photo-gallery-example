@@ -7,9 +7,10 @@ export default class PhotoUpdatePage {
   titleInput: ElementFinder = element(by.css('input#photo-title'));
   descriptionInput: ElementFinder = element(by.css('input#photo-description'));
   imageInput: ElementFinder = element(by.css('input#file_image'));
-  takenOnInput: ElementFinder = element(by.css('input#photo-takenOn'));
-  uploadedOnInput: ElementFinder = element(by.css('input#photo-uploadedOn'));
-  openInput: ElementFinder = element(by.css('input#photo-open'));
+  heightInput: ElementFinder = element(by.css('input#photo-height'));
+  widthInput: ElementFinder = element(by.css('input#photo-width'));
+  takenInput: ElementFinder = element(by.css('input#photo-taken'));
+  uploadedInput: ElementFinder = element(by.css('input#photo-uploaded'));
   albumSelect: ElementFinder = element(by.css('select#photo-album'));
   tagSelect: ElementFinder = element(by.css('select#photo-tag'));
 
@@ -41,25 +42,38 @@ export default class PhotoUpdatePage {
     return this.imageInput.getAttribute('value');
   }
 
-  setTakenOnInput(takenOn) {
-    this.takenOnInput.sendKeys(takenOn);
+  setHeightInput(height) {
+    this.heightInput.sendKeys(height);
   }
 
-  getTakenOnInput() {
-    return this.takenOnInput.getAttribute('value');
+  getHeightInput() {
+    return this.heightInput.getAttribute('value');
   }
 
-  setUploadedOnInput(uploadedOn) {
-    this.uploadedOnInput.sendKeys(uploadedOn);
+  setWidthInput(width) {
+    this.widthInput.sendKeys(width);
   }
 
-  getUploadedOnInput() {
-    return this.uploadedOnInput.getAttribute('value');
+  getWidthInput() {
+    return this.widthInput.getAttribute('value');
   }
 
-  getOpenInput() {
-    return this.openInput;
+  setTakenInput(taken) {
+    this.takenInput.sendKeys(taken);
   }
+
+  getTakenInput() {
+    return this.takenInput.getAttribute('value');
+  }
+
+  setUploadedInput(uploaded) {
+    this.uploadedInput.sendKeys(uploaded);
+  }
+
+  getUploadedInput() {
+    return this.uploadedInput.getAttribute('value');
+  }
+
   albumSelectLastOption() {
     this.albumSelect
       .all(by.tagName('option'))

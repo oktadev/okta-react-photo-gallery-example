@@ -8,13 +8,12 @@ export interface IPhoto {
   description?: any;
   imageContentType?: string;
   image?: any;
-  takenOn?: Moment;
-  uploadedOn?: Moment;
-  open?: boolean;
+  height?: number;
+  width?: number;
+  taken?: Moment;
+  uploaded?: Moment;
   album?: IAlbum;
   tags?: ITag[];
 }
 
-export const defaultValue: Readonly<IPhoto> = {
-  open: false
-};
+export const defaultValue: Readonly<IPhoto> = {};
