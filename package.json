@@ -127,7 +127,6 @@
     ]
   },
   "scripts": {
-    "precommit": "lint-staged",
     "prettier:format": "yarn prettier --write 'src/**/*.{ts,tsx,css,scss}'",
     "lint": "tslint --project tsconfig.json -e 'node_modules/**'",
     "lint:fix": "yarn run lint --fix",
