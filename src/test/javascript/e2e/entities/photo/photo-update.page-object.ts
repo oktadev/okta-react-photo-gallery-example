@@ -42,7 +42,7 @@ export default class PhotoUpdatePage {
     return this.imageInput.getAttribute('value');
   }
 
-  setHeightInput(height) {
+  /*setHeightInput(height) {
     this.heightInput.sendKeys(height);
   }
 
@@ -72,7 +72,7 @@ export default class PhotoUpdatePage {
 
   getUploadedInput() {
     return this.uploadedInput.getAttribute('value');
-  }
+  }*/
 
   albumSelectLastOption() {
     this.albumSelect

@@ -60,8 +60,6 @@ export class Photo extends React.Component<IPhotoProps, IPhotoState> {
       height: photo.height > photo.width ? 4 : photo.height === photo.width ? 1 : 3
     }));
 
-    console.log('photoSet', photoSet);
-
     return (
       <div>
         <h2 id="photo-heading">

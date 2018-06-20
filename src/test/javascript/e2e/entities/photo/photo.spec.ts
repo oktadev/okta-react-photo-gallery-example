@@ -39,14 +39,14 @@ describe('Photo e2e test', () => {
     photoUpdatePage.setDescriptionInput('description');
     expect(await photoUpdatePage.getDescriptionInput()).to.match(/description/);
     photoUpdatePage.setImageInput(absolutePath);
-    photoUpdatePage.setHeightInput('5');
+    /*photoUpdatePage.setHeightInput('5');
     expect(await photoUpdatePage.getHeightInput()).to.eq('5');
     photoUpdatePage.setWidthInput('5');
     expect(await photoUpdatePage.getWidthInput()).to.eq('5');
     photoUpdatePage.setTakenInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
     expect(await photoUpdatePage.getTakenInput()).to.contain('2001-01-01T02:30');
     photoUpdatePage.setUploadedInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
-    expect(await photoUpdatePage.getUploadedInput()).to.contain('2001-01-01T02:30');
+    expect(await photoUpdatePage.getUploadedInput()).to.contain('2001-01-01T02:30');*/
     photoUpdatePage.albumSelectLastOption();
     // photoUpdatePage.tagSelectLastOption();
     await photoUpdatePage.save();
