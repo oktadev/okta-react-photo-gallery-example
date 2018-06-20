@@ -69,6 +69,7 @@ export class Photo extends React.Component<IPhotoProps, IPhotoState> {
             <Translate contentKey="galleryApp.photo.home.createLabel">Create new Photo</Translate>
           </Link>
         </h2>
+        <Gallery photos={photoSet} />
         <div className="table-responsive">
           <InfiniteScroll
             pageStart={this.state.activePage}
@@ -171,7 +172,6 @@ export class Photo extends React.Component<IPhotoProps, IPhotoState> {
             </Table>
           </InfiniteScroll>
         </div>
-        <Gallery photos={photoSet} />
       </div>
     );
   }

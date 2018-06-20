@@ -1,15 +1,6 @@
 package com.okta.developer.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import com.drew.imaging.ImageMetadataReader;
-import com.drew.imaging.ImageProcessingException;
-import com.drew.metadata.Directory;
-import com.drew.metadata.Metadata;
-import com.drew.metadata.MetadataException;
-import com.drew.metadata.Tag;
-import com.drew.metadata.exif.ExifIFD0Directory;
-import com.drew.metadata.exif.ExifSubIFDDirectory;
-import com.drew.metadata.jpeg.JpegDirectory;
 import com.okta.developer.domain.Photo;
 import com.okta.developer.repository.PhotoRepository;
 import com.okta.developer.web.rest.errors.BadRequestAlertException;
@@ -25,20 +16,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.imageio.ImageIO;
 import javax.validation.Valid;
-import javax.xml.bind.DatatypeConverter;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,49 +49,15 @@ public class PhotoResource {
      */
     @PostMapping("/photos")
     @Timed
-    public ResponseEntity<Photo> createPhoto(@Valid @RequestBody Photo photo) throws Exception {
+    public ResponseEntity<Photo> createPhoto(@Valid @RequestBody Photo photo) throws URISyntaxException {
         log.debug("REST request to save Photo : {}", photo);
         if (photo.getId() != null) {
             throw new BadRequestAlertException("A new photo cannot already have an ID", ENTITY_NAME, "idexists");
         }
-
-        photo = setMetadata(photo);
-
         Photo result = photoRepository.save(photo);
         return ResponseEntity.created(new URI("/api/photos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
-    }
-
-    private Photo setMetadata(Photo photo) throws ImageProcessingException, IOException, MetadataException {
-        String str = DatatypeConverter.printBase64Binary(photo.getImage());
-        byte [] data2 = DatatypeConverter.parseBase64Binary(str);
-        InputStream inputStream = new ByteArrayInputStream(data2);
-        BufferedInputStream bis = new BufferedInputStream(inputStream);
-        Metadata metadata = ImageMetadataReader.readMetadata(bis);
-        ExifSubIFDDirectory directory = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
-
-        if (directory != null) {
-            Date date = directory.getDateDigitized();
-            if (date != null) {
-                photo.setTaken(date.toInstant());
-            }
-        }
-
-        if (photo.getTaken() == null) {
-            log.debug("Photo EXIF date digitized not available, setting taken on date to now...");
-            photo.setTaken(Instant.now());
-        }
-
-        photo.setUploaded(Instant.now());
-
-        JpegDirectory jpgDirectory = metadata.getFirstDirectoryOfType(JpegDirectory.class);
-        if (jpgDirectory != null) {
-            photo.setHeight(jpgDirectory.getImageHeight());
-            photo.setWidth(jpgDirectory.getImageWidth());
-        }
-
-        return photo;
     }
 
     /**
