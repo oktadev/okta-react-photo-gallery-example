@@ -42,38 +42,6 @@ export default class PhotoUpdatePage {
     return this.imageInput.getAttribute('value');
   }
 
-  setHeightInput(height) {
-    this.heightInput.sendKeys(height);
-  }
-
-  getHeightInput() {
-    return this.heightInput.getAttribute('value');
-  }
-
-  setWidthInput(width) {
-    this.widthInput.sendKeys(width);
-  }
-
-  getWidthInput() {
-    return this.widthInput.getAttribute('value');
-  }
-
-  setTakenInput(taken) {
-    this.takenInput.sendKeys(taken);
-  }
-
-  getTakenInput() {
-    return this.takenInput.getAttribute('value');
-  }
-
-  setUploadedInput(uploaded) {
-    this.uploadedInput.sendKeys(uploaded);
-  }
-
-  getUploadedInput() {
-    return this.uploadedInput.getAttribute('value');
-  }
-
   albumSelectLastOption() {
     this.albumSelect
       .all(by.tagName('option'))
