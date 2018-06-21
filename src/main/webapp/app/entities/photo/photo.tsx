@@ -14,15 +14,29 @@ import { IPhoto } from 'app/shared/model/photo.model';
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 import Gallery from 'react-photo-gallery';
+import Lightbox from 'react-images';
 
 export interface IPhotoProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
-export type IPhotoState = IPaginationBaseState;
+export interface IPhotoState extends IPaginationBaseState {
+  currentImage: number;
+  lightboxIsOpen: boolean;
+}
 
 export class Photo extends React.Component<IPhotoProps, IPhotoState> {
   state: IPhotoState = {
-    ...getSortState(this.props.location, ITEMS_PER_PAGE)
+    ...getSortState(this.props.location, ITEMS_PER_PAGE),
+    currentImage: 0,
+    lightboxIsOpen: false
   };
+
+  constructor(props) {
+    super(props);
+    this.closeLightbox = this.closeLightbox.bind(this);
+    this.openLightbox = this.openLightbox.bind(this);
+    this.gotoNext = this.gotoNext.bind(this);
+    this.gotoPrevious = this.gotoPrevious.bind(this);
+  }
 
   componentDidMount() {
     this.reset();
@@ -52,6 +66,29 @@ export class Photo extends React.Component<IPhotoProps, IPhotoState> {
     this.props.getEntities(activePage - 1, itemsPerPage, `${sort},${order}`);
   };
 
+  openLightbox(event, obj) {
+    this.setState({
+      currentImage: obj.index,
+      lightboxIsOpen: true
+    });
+  }
+  closeLightbox() {
+    this.setState({
+      currentImage: 0,
+      lightboxIsOpen: false
+    });
+  }
+  gotoPrevious() {
+    this.setState({
+      currentImage: this.state.currentImage - 1
+    });
+  }
+  gotoNext() {
+    this.setState({
+      currentImage: this.state.currentImage + 1
+    });
+  }
+
   render() {
     const { photoList, match } = this.props;
     const photoSet = photoList.map((photo, i) => ({
@@ -69,7 +106,15 @@ export class Photo extends React.Component<IPhotoProps, IPhotoState> {
             <Translate contentKey="galleryApp.photo.home.createLabel">Create new Photo</Translate>
           </Link>
         </h2>
-        <Gallery photos={photoSet} />
+        <Gallery photos={photoSet} onClick={this.openLightbox} />
+        <Lightbox
+          images={photoSet}
+          onClose={this.closeLightbox}
+          onClickPrev={this.gotoPrevious}
+          onClickNext={this.gotoNext}
+          currentImage={this.state.currentImage}
+          isOpen={this.state.lightboxIsOpen}
+        />
         <div className="table-responsive">
           <InfiniteScroll
             pageStart={this.state.activePage}
