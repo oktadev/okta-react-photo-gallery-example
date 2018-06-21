@@ -67,7 +67,11 @@ public class PhotoResource {
             throw new BadRequestAlertException("A new photo cannot already have an ID", ENTITY_NAME, "idexists");
         }
 
-        photo = setMetadata(photo);
+        try {
+            photo = setMetadata(photo);
+        } catch (ImageProcessingException ipe) {
+            log.error(ipe.getMessage());
+        }
 
         Photo result = photoRepository.save(photo);
         return ResponseEntity.created(new URI("/api/photos/" + result.getId()))
