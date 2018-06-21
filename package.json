@@ -24,7 +24,6 @@
     "react-dom": "16.3.0",
     "react-hot-loader": "3.1.1",
     "react-jhipster": "0.5.2",
-    "react-photo-gallery": "6.0.28",
     "react-redux": "5.0.7",
     "react-redux-loading-bar": "3.1.2",
     "react-router-dom": "4.2.2",
@@ -125,6 +124,7 @@
     "src/**/*.{ts,tsx,css,scss}": ["prettier --write", "git add"]
   },
   "scripts": {
+    "precommit": "lint-staged",
     "prettier:format": "yarn prettier --write 'src/**/*.{ts,tsx,css,scss}'",
     "lint": "tslint --project tsconfig.json -e 'node_modules/**'",
     "lint:fix": "yarn run lint --fix",

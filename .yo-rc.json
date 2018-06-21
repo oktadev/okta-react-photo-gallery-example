@@ -4,7 +4,7 @@
       "packageName": "com.okta.developer",
       "nativeLanguage": "en"
     },
-    "jhipsterVersion": "5.0.0-beta.3",
+    "jhipsterVersion": "5.0.0",
     "applicationType": "monolith",
     "baseName": "gallery",
     "packageName": "com.okta.developer",
@@ -35,7 +35,6 @@
       "en",
       "fr"
     ],
-    "herokuDeployType": "git",
-    "herokuAppName": "gallery-pwa"
+    "herokuDeployType": "git"
   }
 }
