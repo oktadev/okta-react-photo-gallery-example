@@ -2,6 +2,8 @@
  
 This example app shows how to build a Photo Gallery with [Spring Boot](https://spring.io/projects/spring-boot), [React](https://reactjs.org/), and [JHipster](https://www.jhipster.tech).
 
+Please read [Build a Photo Gallery PWA with React, Spring Boot, and JHipster](https://developer.okta.com/blog/2018/06/25/react-spring-boot-photo-gallery-pwa) to see how this app was created.
+
 **Prerequisites:** [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), [Node.js](https://nodejs.org/), and [Yarn](https://yarnpkg.org/).
 
 > [Okta](https://developer.okta.com/) has Authentication and User Management APIs that reduce development time with instant-on, scalable user infrastructure. Okta's intuitive API and expert support make it easy for developers to authenticate, manage, and secure users and roles in any application.
@@ -85,12 +87,16 @@ After making these changes, you should be good to go!
 This example uses the following open source libraries:
 
 * [JHipster](https://www.jhipster.tech/)
+* [Metadata Extractor](https://github.com/drewnoakes/metadata-extractor)
+* [React](https://reactjs.org/)
+* [React Photo Gallery](http://neptunian.github.io/react-photo-gallery/)
+* [Spring Boot](https://spring.io/projects/spring-boot)
 
 ## Help
 
-Please post any questions as issues, or visit our [Okta Developer Forums](https://devforum.okta.com/). You can also email developers@okta.com if would like to create a support ticket.
+Please post any questions as comments on the [blog post](https://developer.okta.com/blog/2018/06/25/react-spring-boot-photo-gallery-pwa), or visit our [Okta Developer Forums](https://devforum.okta.com/). You can also email developers@okta.com if would like to create a support ticket.
 
-This application was generated using JHipster 5.0.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v5.0.0](https://www.jhipster.tech/documentation-archive/v5.0.0).
+This application was generated using JHipster 5.0.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v5.0.1](https://www.jhipster.tech/documentation-archive/v5.0.1).
 
 ## License
 
