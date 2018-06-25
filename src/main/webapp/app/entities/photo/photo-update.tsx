@@ -132,7 +132,6 @@ export class PhotoUpdate extends React.Component<IPhotoUpdateProps, IPhotoUpdate
     const isInvalid = false;
     const { photoEntity, albums, tags, loading, updating } = this.props;
     const { isNew } = this.state;
-
     const { description, image, imageContentType } = photoEntity;
 
     const metadata = (

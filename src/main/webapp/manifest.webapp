@@ -1,6 +1,6 @@
 {
-  "name": "gallery",
-  "short_name": "gallery",
+  "name": "React Photo Gallery",
+  "short_name": "Gallery",
   "icons": [
       {
           "src": "./static/images/hipster192.png",

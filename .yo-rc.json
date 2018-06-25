@@ -36,6 +36,6 @@
       "fr"
     ],
     "herokuDeployType": "git",
-    "herokuAppName": null
+    "herokuAppName": "gallery-pwa"
   }
 }

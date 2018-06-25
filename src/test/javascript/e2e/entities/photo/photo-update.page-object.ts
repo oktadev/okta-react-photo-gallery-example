@@ -1,4 +1,4 @@
-Nimport { element, by, ElementFinder } from 'protractor';
+import { element, by, ElementFinder } from 'protractor';
 
 export default class PhotoUpdatePage {
   pageTitle: ElementFinder = element(by.id('galleryApp.photo.home.createOrEditLabel'));
