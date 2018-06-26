@@ -89,7 +89,7 @@ This example uses the following open source libraries:
 * [JHipster](https://www.jhipster.tech/)
 * [Metadata Extractor](https://github.com/drewnoakes/metadata-extractor)
 * [React](https://reactjs.org/)
-* [React Photo Gallery](http://neptunian.github.io/react-photo-gallery/)
+* [React Photo Gallery](https://github.com/neptunian/react-photo-gallery)
 * [Spring Boot](https://spring.io/projects/spring-boot)
 
 ## Help
