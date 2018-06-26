@@ -132,8 +132,51 @@ export class PhotoUpdate extends React.Component<IPhotoUpdateProps, IPhotoUpdate
     const isInvalid = false;
     const { photoEntity, albums, tags, loading, updating } = this.props;
     const { isNew } = this.state;
-
     const { description, image, imageContentType } = photoEntity;
+
+    const metadata = (
+      <div>
+        <AvGroup>
+          <Label id="heightLabel" for="height">
+            <Translate contentKey="galleryApp.photo.height">Height</Translate>
+          </Label>
+          <AvField id="photo-height" type="number" className="form-control" name="height" readOnly />
+        </AvGroup>
+        <AvGroup>
+          <Label id="widthLabel" for="width">
+            <Translate contentKey="galleryApp.photo.width">Width</Translate>
+          </Label>
+          <AvField id="photo-width" type="number" className="form-control" name="width" readOnly />
+        </AvGroup>
+        <AvGroup>
+          <Label id="takenLabel" for="taken">
+            <Translate contentKey="galleryApp.photo.taken">Taken</Translate>
+          </Label>
+          <AvInput
+            id="photo-taken"
+            type="datetime-local"
+            className="form-control"
+            name="taken"
+            readOnly
+            value={isNew ? null : convertDateTimeFromServer(this.props.photoEntity.taken)}
+          />
+        </AvGroup>
+        <AvGroup>
+          <Label id="uploadedLabel" for="uploaded">
+            <Translate contentKey="galleryApp.photo.uploaded">Uploaded</Translate>
+          </Label>
+          <AvInput
+            id="photo-uploaded"
+            type="datetime-local"
+            className="form-control"
+            name="uploaded"
+            readOnly
+            value={isNew ? null : convertDateTimeFromServer(this.props.photoEntity.uploaded)}
+          />
+        </AvGroup>
+      </div>
+    );
+    const metadataRows = isNew ? '' : metadata;
 
     return (
       <div>
@@ -206,42 +249,7 @@ export class PhotoUpdate extends React.Component<IPhotoUpdateProps, IPhotoUpdate
                     <input id="file_image" type="file" onChange={this.onBlobChange(true, 'image')} accept="image/*" />
                   </AvGroup>
                 </AvGroup>
-                <AvGroup>
-                  <Label id="heightLabel" for="height">
-                    <Translate contentKey="galleryApp.photo.height">Height</Translate>
-                  </Label>
-                  <AvField id="photo-height" type="number" className="form-control" name="height" />
-                </AvGroup>
-                <AvGroup>
-                  <Label id="widthLabel" for="width">
-                    <Translate contentKey="galleryApp.photo.width">Width</Translate>
-                  </Label>
-                  <AvField id="photo-width" type="number" className="form-control" name="width" />
-                </AvGroup>
-                <AvGroup>
-                  <Label id="takenLabel" for="taken">
-                    <Translate contentKey="galleryApp.photo.taken">Taken</Translate>
-                  </Label>
-                  <AvInput
-                    id="photo-taken"
-                    type="datetime-local"
-                    className="form-control"
-                    name="taken"
-                    value={isNew ? null : convertDateTimeFromServer(this.props.photoEntity.taken)}
-                  />
-                </AvGroup>
-                <AvGroup>
-                  <Label id="uploadedLabel" for="uploaded">
-                    <Translate contentKey="galleryApp.photo.uploaded">Uploaded</Translate>
-                  </Label>
-                  <AvInput
-                    id="photo-uploaded"
-                    type="datetime-local"
-                    className="form-control"
-                    name="uploaded"
-                    value={isNew ? null : convertDateTimeFromServer(this.props.photoEntity.uploaded)}
-                  />
-                </AvGroup>
+                {metadataRows}
                 <AvGroup>
                   <Label for="album.title">
                     <Translate contentKey="galleryApp.photo.album">Album</Translate>
