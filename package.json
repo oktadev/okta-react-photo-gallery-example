@@ -1,3 +1,4 @@
+
 {
   "name": "gallery",
   "version": "0.0.0",
@@ -24,6 +25,7 @@
     "react-hot-loader": "3.1.1",
     "react-images": "0.5.17",
     "react-jhipster": "0.5.2",
+    "react-loadable": "5.4.0",
     "react-photo-gallery": "6.0.28",
     "react-redux": "5.0.7",
     "react-redux-loading-bar": "3.1.2",
@@ -48,16 +50,15 @@
     "@types/node": "9.6.1",
     "@types/react": "16.1.0",
     "@types/react-dom": "16.0.4",
-    "@types/react-redux": "5.0.19",
     "@types/react-router-dom": "4.2.6",
     "@types/redux": "3.6.31",
+    "@types/react-redux": "5.0.19",
     "@types/selenium-webdriver": "3.0.7",
     "@types/webpack-env": "1.13.5",
     "browser-sync": "2.24.4",
     "browser-sync-webpack-plugin": "2.2.2",
     "cache-loader": "1.2.2",
     "chai": "4.1.2",
-    "chai-as-promised": "7.1.1",
     "copy-webpack-plugin": "4.5.1",
     "core-js": "2.5.4",
     "cross-env": "5.1.4",
@@ -69,11 +70,12 @@
     "fork-ts-checker-webpack-plugin": "0.4.1",
     "html-webpack-plugin": "3.1.0",
     "http-proxy-middleware": "0.18.0",
-    "husky": "0.14.3",
     "identity-obj-proxy": "3.0.0",
+    "husky": "0.14.3",
     "image-webpack-loader": "4.2.0",
     "jest": "22.4.4",
     "jest-sonar-reporter": "2.0.0",
+    "chai-as-promised": "7.1.1",
     "json-loader": "0.5.7",
     "lint-staged": "7.0.1",
     "merge-jsons-webpack-plugin": "1.0.14",
@@ -120,10 +122,7 @@
     "yarn": ">=1.3.2"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,css,scss}": [
-      "prettier --write",
-      "git add"
-    ]
+    "src/**/*.{ts,tsx,css,scss}": ["prettier --write", "git add"]
   },
   "scripts": {
     "precommit": "lint-staged",
