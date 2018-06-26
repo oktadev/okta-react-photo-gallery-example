@@ -2,7 +2,11 @@
  
 This example app shows how to build a Photo Gallery with [Spring Boot](https://spring.io/projects/spring-boot), [React](https://reactjs.org/), and [JHipster](https://www.jhipster.tech).
 
-Please read [Build a Photo Gallery PWA with React, Spring Boot, and JHipster](https://developer.okta.com/blog/2018/06/25/react-spring-boot-photo-gallery-pwa) to see how this app was created.
+Please read [Build a Photo Gallery PWA with React, Spring Boot, and JHipster](https://developer.okta.com/blog/2018/06/25/react-spring-boot-photo-gallery-pwa) to see how this app was created. You can also [watch a screencast on YouTube](https://youtu.be/GlJWUqy1SJM).
+
+<div style="text-align: center">
+<iframe width="560" height="315" style="max-width: 100%" src="https://www.youtube.com/embed/GlJWUqy1SJM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
 
 **Prerequisites:** [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), [Node.js](https://nodejs.org/), and [Yarn](https://yarnpkg.org/).
 
