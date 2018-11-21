@@ -36,7 +36,7 @@ To log in to your app, you'll need to have [Keycloak](https://keycloak.org) up a
 docker-compose -f src/main/docker/keycloak.yml up
 ```
 
-The security settings in `src/main/resources/application.yml` are configured for this image.
+The security settings in `src/main/resources/config/application.yml` are configured for this image.
 
 ```yaml
 security:
