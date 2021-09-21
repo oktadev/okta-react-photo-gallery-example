@@ -12,7 +12,7 @@
     "@fortawesome/fontawesome-free-solid": "5.0.10",
     "@fortawesome/react-fontawesome": "0.0.18",
     "availity-reactstrap-validation": "2.0.2",
-    "axios": "0.21.1",
+    "axios": "0.21.2",
     "bootstrap": "4.0.0",
     "loaders.css": "0.1.2",
     "lodash": "4.17.21",
